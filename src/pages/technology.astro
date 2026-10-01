@@ -1,0 +1,71 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import NumberedList from "../components/NumberedList.astro";
+import heroImage from "../assets/images/technology-hero.webp";
+
+const capabilities = [
+  { number: "01", heading: "Safety reporting", description: "Structured intake for near-miss and safety observations from participating organizations." },
+  { number: "02", heading: "Training management", description: "Course records, rosters, curriculum versions, and credential tracking in one system." },
+  { number: "03", heading: "Risk assessment", description: "Guided assessment workflows that produce comparable, documented risk profiles." },
+  { number: "04", heading: "Knowledge management", description: "A governed library of findings, sources, and lessons learned with version history." },
+  { number: "05", heading: "AI-assisted safety analysis", description: "Machine assistance for summarization, classification, and trend detection under human review." },
+  { number: "06", heading: "Information sharing", description: "Controlled distribution of bulletins and assessments to verified partner organizations." },
+  { number: "07", heading: "Educational platforms", description: "Delivery of courses, modules, and public education material across devices." },
+];
+
+const positioning = [
+  { title: "Software as a service", body: "Delivered as a hosted, subscription-based platform so organizations of any size can participate without building infrastructure." },
+  { title: "Data analytics core", body: "Structured records make comparison possible across time, region, and organization type — the basis of trend detection." },
+  { title: "Scalable by design", body: "A single instructor, a range, or a multi-site institution should be able to use the same system at different depths." },
+  { title: "Governed and auditable", body: "Sources, versions, and revisions are tracked so published intelligence can be traced and corrected." },
+];
+---
+<Layout title="Technology" description="Analysis at national scale requires software. The platform layer for safety intelligence.">
+  <Hero
+    eyebrow="Technology"
+    heading="The Platform Layer for Safety Intelligence"
+    description="Analysis at national scale requires software. NFSINT intends to build the reporting, training, and knowledge systems that make safety intelligence usable day to day."
+    image={heroImage}
+    imageAlt="Abstract navy software dashboard panels representing a secure data platform"
+  />
+
+  <section class="mx-auto max-w-6xl px-6 py-20">
+    <div class="grid gap-12 sm:grid-cols-2">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-gold">Overview</p>
+        <h2 class="mt-2 font-serif text-3xl font-bold text-navy">Infrastructure, Not Gadgets</h2>
+        <p class="mt-4 text-slate-600">The technology program is deliberately unglamorous: intake, records, analysis support, and controlled distribution. These are the systems that turn scattered observations into a durable body of knowledge.</p>
+      </div>
+      <div class="rounded-lg border border-slate-200 p-6">
+        <p class="text-sm font-semibold uppercase tracking-wide text-slate-500">Development Status</p>
+        <span class="mt-2 inline-block rounded-full bg-navy2/10 px-3 py-1 text-xs font-semibold uppercase text-navy">In Development</span>
+        <p class="mt-3 text-sm text-slate-600">The platform described on this page is in development. Capability descriptions represent intended scope for evaluation by partners and prospective pilot organizations, not features available today.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-50 py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">Capabilities</p>
+      <h2 class="mt-2 font-serif text-3xl font-bold text-navy">Seven Planned Platform Capabilities</h2>
+      <p class="mt-4 max-w-2xl text-slate-600">Each capability corresponds to a step in the intelligence cycle, from field intake through distribution back to the field.</p>
+      <div class="mt-10"><NumberedList items={capabilities} columns={3} /></div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-20">
+    <p class="text-sm font-semibold uppercase tracking-wide text-gold">Positioning</p>
+    <h2 class="mt-2 font-serif text-3xl font-bold text-navy">A Scalable SaaS and Data Analytics Platform</h2>
+    <p class="mt-4 max-w-2xl text-slate-600">NFSINT technology is envisioned as a subscription platform with an analytics core — the same architecture that has professionalized safety management in aviation, healthcare, and industrial risk.</p>
+    <div class="mt-10 grid gap-8 sm:grid-cols-4">
+      {positioning.map((p) => (
+        <div>
+          <h3 class="font-serif text-lg font-bold text-navy">{p.title}</h3>
+          <p class="mt-2 text-sm text-slate-600">{p.body}</p>
+        </div>
+      ))}
+    </div>
+    <a href="/partners" class="mt-10 inline-block rounded bg-navy px-6 py-3 text-sm font-semibold text-white">Platform Partnership and Investment</a>
+  </section>
+</Layout>
