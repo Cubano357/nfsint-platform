@@ -64,25 +64,24 @@ const collaborationList = [
           </article>
         ))}
       </div>
+      <aside class="mt-10 rounded-lg border border-slate-200 bg-white p-6">
+        <p class="text-sm font-semibold uppercase tracking-wide text-gold">Crisis Resources</p>
+        <p class="mt-3 text-slate-600">If you or someone you know is in crisis, call or text 988 (Suicide &amp; Crisis Lifeline) in the United States.</p>
+        <p class="mt-3 text-sm text-slate-500">NFSINT is a research organization and does not provide crisis counseling or clinical care. The Lifeline is available 24 hours a day, every day.</p>
+      </aside>
     </div>
   </section>
 
-  <section class="mx-auto max-w-2xl px-6 py-20 text-center">
-    <p class="text-sm font-semibold uppercase tracking-wide text-gold">Crisis Resources</p>
-    <p class="mt-4 text-slate-600">If you or someone you know is in crisis, call or text 988 (Suicide &amp; Crisis Lifeline) in the United States.</p>
-    <p class="mt-2 text-sm text-slate-500">NFSINT is a research organization and does not provide crisis counseling or clinical care. The Lifeline is available 24 hours a day, every day.</p>
-  </section>
-
-  <section class="bg-navy py-20 text-white">
+  <section class="py-20">
     <div class="mx-auto max-w-3xl px-6">
       <p class="text-sm font-semibold uppercase tracking-wide text-gold">Research Collaboration</p>
-      <h2 class="mt-2 font-serif text-2xl font-bold">For Academics, Clinicians, and Institutions</h2>
-      <p class="mt-4 text-slate-300">NFSINT intends to work with universities, hospital systems, public health researchers, and professional bodies on joint study, peer review, and responsible data sharing.</p>
+      <h2 class="mt-2 font-serif text-2xl font-bold text-navy">For Academics, Clinicians, and Institutions</h2>
+      <p class="mt-4 text-slate-600">NFSINT intends to work with universities, hospital systems, public health researchers, and professional bodies on joint study, peer review, and responsible data sharing.</p>
       <p class="mt-6 text-sm font-semibold uppercase tracking-wide text-gold">What Collaboration Can Look Like</p>
-      <ul class="mt-3 space-y-2 text-slate-300">
+      <ul class="mt-3 space-y-2 text-slate-600">
         {collaborationList.map((c) => <li>{c}</li>)}
       </ul>
-      <a href="/contact" class="mt-6 inline-block rounded bg-gold px-6 py-3 text-sm font-semibold text-navy">Propose a Collaboration</a>
+      <a href="/contact" class="mt-6 inline-block rounded border border-navy bg-navy px-6 py-3 text-sm font-semibold text-white hover:bg-navy2">Propose a Collaboration</a>
     </div>
   </section>
 </Layout>
