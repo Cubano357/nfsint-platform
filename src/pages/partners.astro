@@ -78,22 +78,26 @@ const whoThisIsFor = [
   </section>
 
   <section class="py-20">
-    <div class="mx-auto grid max-w-6xl gap-12 px-6 grid-cols-1 sm:grid-cols-2">
-      <div>
-        <p class="text-sm font-semibold uppercase tracking-wide text-gold">Who This Is For</p>
-        <ul class="mt-4 space-y-3 text-slate-600">
-          {whoThisIsFor.map((w) => <li>{w}</li>)}
-        </ul>
-        <a href="/about" class="mt-4 inline-block text-sm font-semibold text-gold hover:underline">Read the Current Status</a>
+    <div class="mx-auto max-w-6xl px-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">Request Materials</p>
+      <h2 class="mt-2 font-serif text-2xl font-bold text-navy">Request the Concept Overview</h2>
+      <p class="mt-4 max-w-2xl text-slate-600">Tell us who you are and what you are evaluating. NFSINT will respond with the concept overview appropriate to your interest.</p>
+      <div class="mt-10 grid grid-cols-1 gap-12 sm:grid-cols-2">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wide text-gold">Who This Is For</p>
+          <ul class="mt-4 space-y-3 text-slate-600">
+            {whoThisIsFor.map((w) => <li>{w}</li>)}
+          </ul>
+          <a href="/about" class="mt-4 inline-block text-sm font-semibold text-gold hover:underline">Read the Current Status</a>
+        </div>
+        <InquiryForm
+          showPhone={false}
+          typeLabel="Interest Type"
+          typeOptions={["Investment", "Partnership", "Institutional Membership", "Research Collaboration", "Media"]}
+          submitLabel="Request Overview"
+          submitNote="Submissions are used only to respond to your inquiry. Do not send emergency reports."
+        />
       </div>
-      <InquiryForm
-        formTitle="Request the Concept Overview"
-        formNote="Tell us who you are and what you are evaluating. NFSINT will respond with the concept overview appropriate to your interest. Submissions are used only to respond to your inquiry. Do not send emergency reports."
-        showPhone={false}
-        typeLabel="Interest Type"
-        typeOptions={["Investment", "Partnership", "Institutional Membership", "Research Collaboration", "Media"]}
-        submitLabel="Request Overview"
-      />
     </div>
   </section>
 </Layout>

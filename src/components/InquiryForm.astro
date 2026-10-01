@@ -1,18 +1,19 @@
 ---
 interface Props {
-  formTitle: string;
-  formNote: string;
+  formTitle?: string;
+  formNote?: string;
   showPhone: boolean;
   typeLabel: string;
   typeOptions: string[];
   submitLabel: string;
+  submitNote: string;
 }
-const { formTitle, formNote, showPhone, typeLabel, typeOptions, submitLabel } = Astro.props;
+const { formTitle, formNote, showPhone, typeLabel, typeOptions, submitLabel, submitNote } = Astro.props;
 ---
 <div>
-  <p class="font-serif text-lg font-bold text-navy">{formTitle}</p>
-  <p class="mt-2 text-sm text-slate-600">{formNote}</p>
-  <form id="inquiry-form" class="mt-6 space-y-4">
+  {formTitle && <p class="font-serif text-lg font-bold text-navy">{formTitle}</p>}
+  {formNote && <p class={formTitle ? "mt-2 text-sm text-slate-600" : "text-sm text-slate-600"}>{formNote}</p>}
+  <form id="inquiry-form" class={formNote || formTitle ? "mt-6 space-y-4" : "space-y-4"}>
     <div>
       <label class="block text-sm font-semibold text-navy" for="name">Name <span class="text-gold">*</span></label>
       <input id="name" name="name" type="text" required class="mt-1 w-full rounded border border-slate-300 px-3 py-2 text-sm" />
@@ -44,7 +45,10 @@ const { formTitle, formNote, showPhone, typeLabel, typeOptions, submitLabel } = 
     <p id="form-placeholder-notice" class="hidden rounded border border-gold bg-gold/10 px-4 py-3 text-sm text-navy" role="alert">
       This form isn't connected to a backend yet — it's a placeholder for a later sub-project. Your message was not sent.
     </p>
-    <button type="submit" class="rounded bg-navy px-6 py-3 text-sm font-semibold text-white">{submitLabel}</button>
+    <div>
+      <button type="submit" class="rounded bg-navy px-6 py-3 text-sm font-semibold text-white">{submitLabel}</button>
+      <p class="mt-3 text-xs text-slate-500">{submitNote}</p>
+    </div>
   </form>
 </div>
 <script>
