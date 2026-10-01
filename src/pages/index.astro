@@ -1,6 +1,167 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import NumberedList from "../components/NumberedList.astro";
+import ProductGrid from "../components/ProductGrid.astro";
+import { Image } from "astro:assets";
+import texture from "../assets/images/texture-navy-a.webp";
+// The live Home page reuses two more images from the shared pool as faint
+// (opacity ~20%) background textures on its two other dark sections -
+// confirmed by inspecting each <img>'s DOM path on the live site, not a
+// guess. See Review Focus: reused images.
+import visionTexture from "../assets/images/mission-hero.webp";
+import collaborationTexture from "../assets/images/contact-hero.webp";
+
+const pillars = [
+  { title: "Intelligence", description: "Centralized collection and analysis of firearm safety information from credible public sources." },
+  { title: "Education", description: "Practical safety education for owners, families, institutions, and community organizations." },
+  { title: "Research", description: "Independent, evidence-based study of prevention, human factors, and training effectiveness." },
+  { title: "Technology", description: "A platform layer for reporting, analysis, knowledge management, and information sharing." },
+];
+
+const consequences = [
+  { number: "01", heading: "Safety information is inconsistent." },
+  { number: "02", heading: "Lessons learned from incidents are rarely centralized." },
+  { number: "03", heading: "Emerging threats are identified too slowly." },
+  { number: "04", heading: "Training standards vary widely." },
+  { number: "05", heading: "Communities often receive reactive rather than preventive guidance." },
+];
+
+const notList = [
+  "Independent of advocacy campaigns and political positioning.",
+  "Separate from regulatory authority and rulemaking.",
+  "Distinct from law enforcement operations and investigations.",
+  "Focused on turning credible information into practical knowledge.",
+];
+
+const objectives = [
+  { number: "01", heading: "Intelligence Collection", description: "Gather firearm safety information from public safety reports, court decisions, investigations, research, and practitioners.", href: "/intelligence" },
+  { number: "02", heading: "Intelligence Analysis", description: "Transform raw information into bulletins, trend reports, risk analyses, and best-practice recommendations.", href: "/intelligence" },
+  { number: "03", heading: "Public Safety Education", description: "Develop educational programs for owners, families, schools, faith organizations, businesses, and community leaders.", href: "/programs" },
+  { number: "04", heading: "Professional Development", description: "Provide specialized training for instructors, range safety officers, security personnel, and safety teams.", href: "/programs" },
+  { number: "05", heading: "Research", description: "Conduct independent, evidence-based research on storage, prevention, human factors, and communication.", href: "/research" },
+  { number: "06", heading: "Technology", description: "Build the software and analytics layer that makes safety intelligence usable at scale.", href: "/technology" },
+];
+
+const products = [
+  { title: "National Firearm Safety Bulletins", description: "Periodic bulletins summarizing current safety issues, recalls, and prevention guidance." },
+  { title: "Threat Awareness Reports", description: "Assessments of emerging risks relevant to institutions, ranges, and community organizations." },
+  { title: "Annual Firearm Safety Index", description: "A yearly synthesis of publicly available indicators of firearm safety and prevention." },
+  { title: "Safety Intelligence Database", description: "A searchable, citation-backed repository of safety findings and lessons learned." },
+  { title: "AI-Powered Research Assistant", description: "A guided research tool to help practitioners locate relevant safety literature quickly." },
+  { title: "Instructor Resource Center", description: "Curriculum support, updates, and reference material for firearms instructors." },
+];
+
+const audiences = [
+  "Responsible firearm owners", "Firearms instructors", "Shooting ranges", "Schools and universities",
+  "Community organizations", "Houses of worship", "Security companies", "Corporate safety departments",
+  "Healthcare organizations", "Researchers", "Policymakers", "Nonprofit organizations",
+];
 ---
-<Layout title="Home" description="NFSINT placeholder - replaced in Task 4">
-  <p class="p-12">Placeholder - Task 4 replaces this with the real Home page.</p>
+<Layout title="Home" description="NFSINT - National Firearms Safety Intelligence Group. Information. Intelligence. Safety. Community.">
+  <section class="relative isolate overflow-hidden bg-navy py-24 sm:py-32">
+    <Image src={texture} alt="" class="absolute inset-0 h-full w-full object-cover opacity-[0.28]" />
+    <div class="relative mx-auto max-w-3xl px-6 text-center text-white">
+      <p class="text-sm font-semibold uppercase tracking-widest text-gold">National Firearms Safety Intelligence Group</p>
+      <h1 class="mt-3 font-serif text-5xl font-bold">NFSINT</h1>
+      <p class="mt-4 text-lg text-gold">Information. Intelligence. Safety. Community.</p>
+      <p class="mt-6 text-lg text-slate-200">A national intelligence, research, training, and public safety organization dedicated to reducing firearm-related injuries, violence, and preventable tragedies through actionable safety intelligence.</p>
+      <div class="mt-8 flex justify-center gap-4">
+        <a href="/mission" class="rounded bg-gold px-6 py-3 text-sm font-semibold text-navy">Explore Our Mission</a>
+        <a href="/partners" class="rounded border border-white px-6 py-3 text-sm font-semibold text-white">Partner With Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-20">
+    <div class="grid gap-8 sm:grid-cols-4">
+      {pillars.map((p) => (
+        <div>
+          <h3 class="font-serif text-lg font-bold text-navy">{p.title}</h3>
+          <p class="mt-2 text-sm text-slate-600">{p.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-slate-50 py-20">
+    <div class="mx-auto grid max-w-6xl gap-12 px-6 sm:grid-cols-2">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-gold">The Problem</p>
+        <h2 class="mt-2 font-serif text-3xl font-bold text-navy">Fragmented Information Costs Lives</h2>
+        <p class="mt-4 text-slate-600">Across the United States, information related to firearm safety is fragmented among numerous organizations, agencies, researchers, instructors, insurers, manufacturers, healthcare providers, and community groups.</p>
+        <p class="mt-4 text-slate-600">NFSINT seeks to bridge these gaps by creating a centralized intelligence framework focused on firearm safety and prevention.</p>
+      </div>
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-gold">Consequences</p>
+        <p class="mt-2 font-serif text-xl font-bold text-navy">What fragmentation produces in practice</p>
+        <div class="mt-6"><NumberedList items={consequences} columns={2} /></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 py-20 text-center">
+    <p class="text-sm font-semibold uppercase tracking-wide text-gold">Mission</p>
+    <blockquote class="mt-4 font-serif text-2xl text-navy">To collect, analyze, develop, and share firearm safety intelligence that strengthens communities, supports professionals, informs decision-makers, and promotes responsible firearm ownership through education, research, technology, and collaboration.</blockquote>
+  </section>
+
+  <section class="relative isolate overflow-hidden bg-navy2 py-20 text-white">
+    <Image src={visionTexture} alt="" class="absolute inset-0 h-full w-full object-cover opacity-20" />
+    <div class="relative mx-auto grid max-w-6xl gap-12 px-6 sm:grid-cols-2">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-gold">Vision</p>
+        <h2 class="mt-2 font-serif text-3xl font-bold">Not Advocacy. Not Regulation. Not Enforcement.</h2>
+        <p class="mt-4 text-slate-300">Unlike organizations whose primary mission is advocacy, regulation, or law enforcement, NFSINT focuses on transforming information into practical knowledge that empowers individuals, professionals, communities, and institutions to make informed decisions that enhance public safety.</p>
+      </div>
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-gold">A Neutral Center for Knowledge</p>
+        <ul class="mt-4 space-y-3 text-slate-300">
+          {notList.map((item) => <li>{item}</li>)}
+        </ul>
+        <a href="/about" class="mt-4 inline-block text-sm font-semibold text-gold hover:underline">What we are, and are not</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-20">
+    <p class="text-sm font-semibold uppercase tracking-wide text-gold">Core Objectives</p>
+    <h2 class="mt-2 font-serif text-3xl font-bold text-navy">Six Functions of a National Safety Intelligence Framework</h2>
+    <p class="mt-4 max-w-2xl text-slate-600">Each objective is a distinct discipline, and each depends on the others. Together they form a repeatable path from raw information to practical prevention.</p>
+    <div class="mt-10"><NumberedList items={objectives} columns={3} /></div>
+  </section>
+
+  <section class="bg-slate-50 py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="flex items-end justify-between">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wide text-gold">Intelligence Products</p>
+          <h2 class="mt-2 font-serif text-3xl font-bold text-navy">Planned Products and Publications</h2>
+          <p class="mt-4 max-w-2xl text-slate-600">The following products are envisioned as the core output of the NFSINT intelligence cycle. All are in development and none are yet operational.</p>
+        </div>
+        <a href="/intelligence" class="hidden shrink-0 text-sm font-semibold text-gold hover:underline sm:block">View All Products</a>
+      </div>
+      <div class="mt-10"><ProductGrid items={products} /></div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-20">
+    <p class="text-sm font-semibold uppercase tracking-wide text-gold">Who We Serve</p>
+    <h2 class="mt-2 font-serif text-3xl font-bold text-navy">A National Audience for Practical Safety Intelligence</h2>
+    <p class="mt-4 max-w-2xl text-slate-600">NFSINT products are designed for the people and institutions who make daily decisions about firearm safety.</p>
+    <ul class="mt-8 grid gap-3 sm:grid-cols-3">
+      {audiences.map((a) => <li class="text-sm text-slate-600">{a}</li>)}
+    </ul>
+  </section>
+
+  <section class="relative isolate overflow-hidden bg-navy py-20 text-center text-white">
+    <Image src={collaborationTexture} alt="" class="absolute inset-0 h-full w-full object-cover opacity-20" />
+    <div class="relative mx-auto max-w-2xl px-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">Collaboration</p>
+      <h2 class="mt-2 font-serif text-3xl font-bold">Join the National Safety Intelligence Network</h2>
+      <p class="mt-4 text-slate-300">NFSINT is being built in collaboration with instructors, institutions, researchers, and community organizations. If your work touches firearm safety, there is a place for your experience in this framework.</p>
+      <div class="mt-8 flex justify-center gap-4">
+        <a href="/contact" class="rounded bg-gold px-6 py-3 text-sm font-semibold text-navy">Contact NFSINT</a>
+        <a href="/partners" class="rounded border border-white px-6 py-3 text-sm font-semibold text-white">Partnership and Investment</a>
+      </div>
+    </div>
+  </section>
 </Layout>
