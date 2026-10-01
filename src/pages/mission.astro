@@ -2,7 +2,12 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import NumberedList from "../components/NumberedList.astro";
+import { Image } from "astro:assets";
 import heroImage from "../assets/images/mission-hero.webp";
+// Live site: the Mission Statement section is bg-navy2 with this texture
+// overlay - confirmed by inspecting the live page's section classes and
+// <img> DOM path directly, not assumed.
+import statementTexture from "../assets/images/texture-navy-a.webp";
 
 const pillars = [
   { number: "01", heading: "Information", description: "Credible, sourced, and organized. NFSINT gathers what is publicly known about firearm safety and makes it findable in one place." },
@@ -26,12 +31,15 @@ const notList = [
     imageAlt="Abstract layered topographic contour lines in navy and slate"
   />
 
-  <section class="mx-auto max-w-3xl px-6 py-20 text-center">
-    <p class="text-sm font-semibold uppercase tracking-wide text-gold">Mission Statement</p>
-    <blockquote class="mt-4 font-serif text-2xl text-navy">To collect, analyze, develop, and share firearm safety intelligence that strengthens communities, supports professionals, informs decision-makers, and promotes responsible firearm ownership through education, research, technology, and collaboration.</blockquote>
+  <section class="relative isolate overflow-hidden bg-navy2 py-20 text-center text-white">
+    <Image src={statementTexture} alt="" class="absolute inset-0 h-full w-full object-cover opacity-20" />
+    <div class="relative mx-auto max-w-3xl px-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">Mission Statement</p>
+      <blockquote class="mt-4 font-serif text-2xl">To collect, analyze, develop, and share firearm safety intelligence that strengthens communities, supports professionals, informs decision-makers, and promotes responsible firearm ownership through education, research, technology, and collaboration.</blockquote>
+    </div>
   </section>
 
-  <section class="bg-slate-50 py-20">
+  <section class="py-20">
     <div class="mx-auto max-w-6xl px-6">
       <p class="text-sm font-semibold uppercase tracking-wide text-gold">The Four Pillars</p>
       <h2 class="mt-2 font-serif text-3xl font-bold text-navy">Information. Intelligence. Safety. Community.</h2>
@@ -40,7 +48,8 @@ const notList = [
     </div>
   </section>
 
-  <section class="mx-auto max-w-6xl px-6 py-20">
+  <section class="border-y border-slate-200 bg-slate-50 py-20">
+   <div class="mx-auto max-w-6xl px-6">
     <p class="text-sm font-semibold uppercase tracking-wide text-gold">Vision</p>
     <h2 class="mt-2 font-serif text-3xl font-bold text-navy">A Neutral Center for Firearm Safety Knowledge</h2>
     <p class="mt-4 max-w-2xl text-slate-600">Unlike organizations whose primary mission is advocacy, regulation, or law enforcement, NFSINT focuses on transforming information into practical knowledge that empowers individuals, professionals, communities, and institutions to make informed decisions that enhance public safety.</p>
@@ -52,18 +61,19 @@ const notList = [
         </div>
       ))}
     </div>
+   </div>
   </section>
 
-  <section class="bg-navy py-20 text-white">
+  <section class="py-20">
     <div class="mx-auto max-w-3xl px-6">
       <p class="text-sm font-semibold uppercase tracking-wide text-gold">Long-Term Vision</p>
-      <h2 class="mt-2 font-serif text-2xl font-bold">Where This Is Intended to Lead</h2>
-      <p class="mt-4 text-slate-300">The long-term goal is to establish NFSINT as the nation's premier independent firearm safety intelligence organization—a trusted source of research, analysis, education, and professional standards that helps reduce preventable firearm injuries through evidence-based information and collaboration.</p>
-      <p class="mt-4 text-slate-300">Rather than functioning as a regulatory body or law enforcement agency, NFSINT would serve as a neutral center for collecting knowledge, identifying trends, and developing practical solutions that improve firearm safety for communities across the United States.</p>
-      <p class="mt-4 text-sm text-slate-400">NFSINT is currently in the organizational development stage. Objectives described on this page are planned or envisioned, and are published here so partners can evaluate the concept honestly.</p>
+      <h2 class="mt-2 font-serif text-2xl font-bold text-navy">Where This Is Intended to Lead</h2>
+      <p class="mt-4 text-slate-600">The long-term goal is to establish NFSINT as the nation's premier independent firearm safety intelligence organization—a trusted source of research, analysis, education, and professional standards that helps reduce preventable firearm injuries through evidence-based information and collaboration.</p>
+      <p class="mt-4 text-slate-600">Rather than functioning as a regulatory body or law enforcement agency, NFSINT would serve as a neutral center for collecting knowledge, identifying trends, and developing practical solutions that improve firearm safety for communities across the United States.</p>
+      <p class="mt-4 text-sm text-slate-500">NFSINT is currently in the organizational development stage. Objectives described on this page are planned or envisioned, and are published here so partners can evaluate the concept honestly.</p>
       <div class="mt-6 flex gap-4">
-        <a href="/intelligence" class="rounded bg-gold px-5 py-2.5 text-sm font-semibold text-navy">See the Intelligence Cycle</a>
-        <a href="/about" class="rounded border border-white px-5 py-2.5 text-sm font-semibold text-white">Current Status</a>
+        <a href="/intelligence" class="rounded border border-navy bg-navy px-5 py-2.5 text-sm font-semibold text-white hover:bg-navy2">See the Intelligence Cycle</a>
+        <a href="/about" class="rounded border border-navy/30 px-5 py-2.5 text-sm font-semibold text-navy hover:border-navy">Current Status</a>
       </div>
     </div>
   </section>
