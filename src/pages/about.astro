@@ -1,0 +1,124 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import FAQAccordion from "../components/FAQAccordion.astro";
+import heroImage from "../assets/images/about-hero.webp";
+
+const faqs = [
+  {
+    question: "01 What is NFSINT, and what stage is it in?",
+    answer: "NFSINT — the National Firearms Safety Intelligence Group — is an independent intelligence, research, training, and public safety organization concerned with reducing firearm-related injuries, violence, and preventable tragedies. It is presently in the organizational development stage. The framework, product set, research agenda, and analytic method are being documented before the organization operates. No bulletins have been published, no certifications are active, and no membership program is open.",
+  },
+  {
+    question: "02 Is NFSINT a government or law enforcement agency?",
+    answer: "No. NFSINT is not a government agency, a regulatory body, or a law enforcement organization. It holds no enforcement authority, issues no licenses or permits, and has no investigative jurisdiction. It also does not accept emergency reports. If you are facing an emergency or an immediate threat to safety, call 911.",
+  },
+  {
+    question: "03 Is NFSINT an advocacy organization?",
+    answer: "No. NFSINT is not an advocacy organization and not a political organization. It does not campaign for or against legislation, candidates, or ballot measures. Its intended role is narrower: to collect credible, publicly available information, analyze it, and publish practical safety findings alongside their sources so that readers can evaluate the evidence themselves.",
+  },
+  {
+    question: "04 How does NFSINT decide what to research?",
+    answer: "Priorities are intended to follow the intelligence cycle described on this site. What is collected from credible public sources and practitioner reporting shapes what is analyzed, and feedback from the field shapes what is collected next. Within that cycle, preference is given to questions where preventable factors can be identified and where practical guidance could realistically change an outcome. The published research agenda covers areas such as safe storage, human factors, training effectiveness, and public safety communication.",
+  },
+  {
+    question: "05 Who can partner with or join NFSINT?",
+    answer: "Partnership and membership pathways are being developed for firearm owners, instructors, ranges, schools and universities, community and faith organizations, employers, security providers, healthcare organizations, researchers, and policymakers. Nothing is open for enrollment at this stage. Individuals and organizations interested in collaboration, research, investment, or an advisory role may make contact through the inquiry form; correspondence is answered by email.",
+  },
+  {
+    question: "06 How will intelligence products be distributed?",
+    answer: "Distribution is planned along two lines: public safety material intended for open access, and controlled products released to verified partner organizations through the platform now in development. Each product is intended to carry its sources and its date of issue. Nothing is in circulation at present. When products are released, this site will state what is available and how it can be obtained.",
+  },
+  {
+    question: "07 Does NFSINT accept incident or emergency reports?",
+    answer: "No. NFSINT is not a reporting channel for emergencies, crimes, or threats, and it cannot dispatch assistance. Call 911 in an emergency. If you or someone you know is in crisis, call or text 988 (Suicide & Crisis Lifeline) in the United States. Structured, non-emergency safety and near-miss reporting from participating organizations is a planned capability of the technology platform and is not yet available.",
+  },
+];
+
+const steps = [
+  { number: "01", heading: "Define the framework", description: "Document the intelligence cycle, product set, research agenda, and program structure in full before operating." },
+  { number: "02", heading: "Build the collection base", description: "Establish sourcing relationships with instructors, ranges, institutions, and public data holders." },
+  { number: "03", heading: "Develop the platform", description: "Build the reporting, knowledge management, and analysis systems that make the work repeatable." },
+  { number: "04", heading: "Publish and iterate", description: "Release initial bulletins and research openly, then refine products against field feedback." },
+];
+---
+<Layout title="About" description="Who NFSINT is, and what it is not. An independent organization in the organizational development stage.">
+  <Hero
+    eyebrow="About"
+    heading="Who We Are, and What We Are Not"
+    description="NFSINT is an independent organization in the organizational development stage. This page states plainly where the organization stands today."
+    image={heroImage}
+    imageAlt="Civic building facade with limestone columns under an overcast sky"
+  />
+
+  <section class="mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:grid-cols-2">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">What NFSINT Is</p>
+      <ul class="mt-4 space-y-3 text-slate-600">
+        <li>An independent intelligence, research, and education organization focused on firearm safety.</li>
+        <li>A neutral center for collecting knowledge, identifying trends, and developing practical solutions.</li>
+        <li>A convener of owners, instructors, institutions, researchers, and community organizations.</li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">What NFSINT Is Not</p>
+      <ul class="mt-4 space-y-3 text-slate-600">
+        <li>Not an advocacy organization and not a political organization.</li>
+        <li>Not a regulatory body and not a standards-setting authority of government.</li>
+        <li>Not a law enforcement agency, and not a channel for emergency reporting.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="bg-slate-50 py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">Organizational Concept</p>
+      <h2 class="mt-2 font-serif text-3xl font-bold text-navy">Framework First, Operations Second</h2>
+      <p class="mt-4 max-w-2xl text-slate-600">NFSINT is being designed as an institution rather than assembled as a campaign. That means the framework, standards, and analytic method are documented before any product is published.</p>
+      <div class="mt-10 grid gap-8 sm:grid-cols-4">
+        {steps.map((s) => (
+          <article>
+            <p class="font-serif text-2xl font-bold text-gold">{s.number}</p>
+            <h3 class="mt-2 font-serif text-lg font-bold text-navy">{s.heading}</h3>
+            <p class="mt-2 text-sm text-slate-600">{s.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 py-20">
+    <p class="text-sm font-semibold uppercase tracking-wide text-gold">Current Status</p>
+    <h2 class="mt-2 font-serif text-2xl font-bold text-navy">NFSINT is in the organizational development stage.</h2>
+    <p class="mt-4 text-slate-600">The organization is not yet operational. It has no published bulletins, no active certifications, no membership program, and no research findings in circulation. Everything described across this site is planned, in development, or envisioned, and is labeled as such.</p>
+    <p class="mt-4 text-slate-600">No operating history, statistics, partnerships, endorsements, or member counts are claimed anywhere on this website. When those things exist, they will be published with their sources.</p>
+    <p class="mt-4 text-slate-600">NFSINT is an independent organization in the organizational development stage. It is not a government agency, regulatory body, or law enforcement organization. Content on this site is provided for educational and informational purposes only.</p>
+  </section>
+
+  <section class="bg-slate-50 py-20">
+    <div class="mx-auto max-w-3xl px-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">Leadership</p>
+      <h2 class="mt-2 font-serif text-2xl font-bold text-navy">Leadership and Advisory Bios</h2>
+      <p class="mt-4 text-slate-600">This section is intentionally left as a marked placeholder. NFSINT will publish leadership and advisory biographies once individuals are formally appointed — no names or credentials are listed before then.</p>
+      <div class="mt-8 grid gap-6 sm:grid-cols-3">
+        {["Executive Leadership", "Research Advisory", "Program Advisory"].map((role) => (
+          <div class="rounded-lg border border-slate-200 p-6">
+            <span class="inline-block rounded-full bg-navy2/10 px-3 py-1 text-xs font-semibold uppercase text-navy">Placeholder</span>
+            <h3 class="mt-3 font-serif text-lg font-bold text-navy">{role}</h3>
+            <p class="mt-2 text-sm text-slate-600">Biography to be published upon formal appointment. No individual is currently represented as holding this role.</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-6 text-sm text-slate-600">Professionals interested in an advisory or leadership role may make contact through the general inquiry form.</p>
+      <a href="/contact" class="mt-2 inline-block text-sm font-semibold text-gold hover:underline">Contact NFSINT</a>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 py-20">
+    <p class="text-sm font-semibold uppercase tracking-wide text-gold">Frequently Asked Questions</p>
+    <h2 class="mt-2 font-serif text-2xl font-bold text-navy">Common Questions About Scope and Status</h2>
+    <p class="mt-4 text-slate-600">The answers below describe the organization as it stands today. Where a capability is planned rather than operational, it is identified as such.</p>
+    <div class="mt-8"><FAQAccordion items={faqs} /></div>
+    <p class="mt-8 text-xs text-slate-500">NFSINT is an independent organization in the organizational development stage. It is not a government agency, regulatory body, or law enforcement organization. Content on this site is provided for educational and informational purposes only.</p>
+  </section>
+</Layout>

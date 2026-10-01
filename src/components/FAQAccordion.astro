@@ -1,0 +1,55 @@
+---
+interface Item {
+  question: string;
+  answer: string;
+}
+interface Props {
+  items: Item[];
+}
+const { items } = Astro.props;
+---
+<div class="divide-y divide-slate-200 border-y border-slate-200">
+  {items.map((item, i) => (
+    <div>
+      <h3>
+        <button
+          type="button"
+          class="faq-toggle flex w-full items-center justify-between py-5 text-left font-serif text-lg font-bold text-navy"
+          aria-expanded="false"
+          aria-controls={`faq-panel-${i}`}
+        >
+          <span>{item.question}</span>
+          <span class="faq-icon ml-4 shrink-0 text-gold">+</span>
+        </button>
+      </h3>
+      <div id={`faq-panel-${i}`} class="faq-panel hidden pb-5 text-sm text-slate-600">
+        {item.answer}
+      </div>
+    </div>
+  ))}
+</div>
+<script>
+  // Single-open-at-a-time accordion, matching the live site's behavior.
+  const toggles = document.querySelectorAll<HTMLButtonElement>(".faq-toggle");
+  toggles.forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      const panelId = toggle.getAttribute("aria-controls");
+      const panel = panelId ? document.getElementById(panelId) : null;
+      const isOpen = toggle.getAttribute("aria-expanded") === "true";
+
+      toggles.forEach((other) => {
+        other.setAttribute("aria-expanded", "false");
+        other.querySelector(".faq-icon")!.textContent = "+";
+        const otherPanelId = other.getAttribute("aria-controls");
+        const otherPanel = otherPanelId ? document.getElementById(otherPanelId) : null;
+        otherPanel?.classList.add("hidden");
+      });
+
+      if (!isOpen) {
+        toggle.setAttribute("aria-expanded", "true");
+        toggle.querySelector(".faq-icon")!.textContent = "−";
+        panel?.classList.remove("hidden");
+      }
+    });
+  });
+</script>
