@@ -1,0 +1,92 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import NumberedList from "../components/NumberedList.astro";
+import InquiryForm from "../components/InquiryForm.astro";
+import heroImage from "../assets/images/partners-hero.webp";
+
+const sectors = [
+  { number: "01", heading: "Public safety technology" },
+  { number: "02", heading: "Artificial intelligence" },
+  { number: "03", heading: "Professional education and certification" },
+  { number: "04", heading: "Data analytics" },
+  { number: "05", heading: "Risk intelligence" },
+  { number: "06", heading: "Software as a service" },
+  { number: "07", heading: "Research and consulting" },
+];
+
+const revenueStreams = [
+  { number: "01", heading: "Membership subscriptions" },
+  { number: "02", heading: "Professional certifications" },
+  { number: "03", heading: "Instructor credentialing" },
+  { number: "04", heading: "Training courses" },
+  { number: "05", heading: "Conferences and symposiums" },
+  { number: "06", heading: "Research publications" },
+  { number: "07", heading: "Consulting services" },
+  { number: "08", heading: "Organizational memberships" },
+  { number: "09", heading: "Grants" },
+  { number: "10", heading: "Sponsorships" },
+  { number: "11", heading: "Technology licensing" },
+  { number: "12", heading: "Enterprise software subscriptions" },
+];
+
+const whoThisIsFor = [
+  "Investors evaluating early-stage public safety and SaaS ventures.",
+  "Institutions considering organizational membership or pilot participation.",
+  "Universities and research bodies exploring collaboration.",
+  "Journalists seeking accurate background on the concept.",
+];
+---
+<Layout title="Partners" description="NFSINT is seeking founding partners, institutional collaborators, and mission-aligned investors.">
+  <Hero
+    eyebrow="Partners"
+    heading="Partnership and Investment"
+    description="NFSINT is seeking founding partners, institutional collaborators, and mission-aligned investors to build a national safety intelligence capability that does not currently exist."
+    image={heroImage}
+    imageAlt="Empty modern institutional conference room with long table and daylight"
+  />
+
+  <section class="mx-auto max-w-3xl px-6 py-20">
+    <p class="text-sm font-semibold uppercase tracking-wide text-gold">Overview</p>
+    <h2 class="mt-2 font-serif text-3xl font-bold text-navy">A Measured Proposition, Honestly Stated</h2>
+    <p class="mt-4 text-slate-600">NFSINT is in the organizational development stage. There is no operating history, no revenue, and no membership base to present. What exists is a defined problem, a structured concept, and a plan of record — offered for review by parties who evaluate early-stage institutional ventures.</p>
+    <p class="mt-4 text-slate-600">Its value proposition lies in creating a scalable platform that delivers actionable safety intelligence, educational resources, and analytical tools to individuals, organizations, and institutions seeking to improve firearm safety and risk awareness.</p>
+  </section>
+
+  <section class="bg-slate-50 py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">Why NFSINT</p>
+      <h2 class="mt-2 font-serif text-3xl font-bold text-navy">A Convergence of Growing Sectors</h2>
+      <p class="mt-4 max-w-2xl text-slate-600">The concept sits at the intersection of several established and expanding fields. Each one already has mature demand; none currently serves firearm safety intelligence as an integrated discipline.</p>
+      <div class="mt-10"><NumberedList items={sectors} columns={4} /></div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-20">
+    <p class="text-sm font-semibold uppercase tracking-wide text-gold">Sustainability Model</p>
+    <h2 class="mt-2 font-serif text-3xl font-bold text-navy">Potential Revenue Streams</h2>
+    <p class="mt-4 max-w-2xl text-slate-600">A durable institution needs diversified support. The streams listed are potential, not active, and are published for evaluation rather than as projections.</p>
+    <div class="mt-10"><NumberedList items={revenueStreams} columns={4} /></div>
+    <p class="mt-8 text-sm text-slate-500">No revenue figures, valuations, timelines, or financial projections are presented on this website. Detailed materials are shared directly with reviewing parties on request.</p>
+  </section>
+
+  <section class="bg-slate-50 py-20">
+    <div class="mx-auto grid max-w-6xl gap-12 px-6 sm:grid-cols-2">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-gold">Who This Is For</p>
+        <ul class="mt-4 space-y-3 text-slate-600">
+          {whoThisIsFor.map((w) => <li>{w}</li>)}
+        </ul>
+        <a href="/about" class="mt-4 inline-block text-sm font-semibold text-gold hover:underline">Read the Current Status</a>
+      </div>
+      <InquiryForm
+        formTitle="Request the Concept Overview"
+        formNote="Tell us who you are and what you are evaluating. NFSINT will respond with the concept overview appropriate to your interest. Submissions are used only to respond to your inquiry. Do not send emergency reports."
+        showPhone={false}
+        typeLabel="Interest Type"
+        typeOptions={["Investment", "Partnership", "Institutional Membership", "Research Collaboration", "Media"]}
+        submitLabel="Request Overview"
+      />
+    </div>
+  </section>
+</Layout>
