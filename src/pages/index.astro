@@ -5,11 +5,12 @@ import ProductGrid from "../components/ProductGrid.astro";
 import { Image } from "astro:assets";
 import texture from "../assets/images/texture-navy-a.webp";
 // The live Home page reuses two more images from the shared pool as faint
-// (opacity ~20%) background textures on its two other dark sections -
-// confirmed by inspecting each <img>'s DOM path on the live site, not a
-// guess. See Review Focus: reused images.
-import visionTexture from "../assets/images/mission-hero.webp";
-import collaborationTexture from "../assets/images/contact-hero.webp";
+// (opacity ~20%) background textures on its two other bg-navy2 sections -
+// the Mission Statement quote and Who We Serve - confirmed by inspecting
+// each <img>'s DOM path on the live site, not a guess. See Review Focus:
+// reused images.
+import statementTexture from "../assets/images/mission-hero.webp";
+import whoWeServeTexture from "../assets/images/contact-hero.webp";
 
 const pillars = [
   { title: "Intelligence", description: "Centralized collection and analysis of firearm safety information from credible public sources." },
@@ -72,7 +73,8 @@ const audiences = [
     </div>
   </section>
 
-  <section class="mx-auto max-w-6xl px-6 py-20">
+  <section class="border-b border-slate-200 py-20">
+   <div class="mx-auto max-w-6xl px-6">
     <div class="grid gap-8 sm:grid-cols-4">
       {pillars.map((p) => (
         <div>
@@ -81,6 +83,7 @@ const audiences = [
         </div>
       ))}
     </div>
+   </div>
   </section>
 
   <section class="bg-slate-50 py-20">
@@ -99,22 +102,24 @@ const audiences = [
     </div>
   </section>
 
-  <section class="mx-auto max-w-3xl px-6 py-20 text-center">
-    <p class="text-sm font-semibold uppercase tracking-wide text-gold">Mission</p>
-    <blockquote class="mt-4 font-serif text-2xl text-navy">To collect, analyze, develop, and share firearm safety intelligence that strengthens communities, supports professionals, informs decision-makers, and promotes responsible firearm ownership through education, research, technology, and collaboration.</blockquote>
+  <section class="relative isolate overflow-hidden bg-navy2 py-20 text-center text-white">
+    <Image src={statementTexture} alt="" class="absolute inset-0 h-full w-full object-cover opacity-20" />
+    <div class="relative mx-auto max-w-3xl px-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">Mission</p>
+      <blockquote class="mt-4 font-serif text-2xl">To collect, analyze, develop, and share firearm safety intelligence that strengthens communities, supports professionals, informs decision-makers, and promotes responsible firearm ownership through education, research, technology, and collaboration.</blockquote>
+    </div>
   </section>
 
-  <section class="relative isolate overflow-hidden bg-navy2 py-20 text-white">
-    <Image src={visionTexture} alt="" class="absolute inset-0 h-full w-full object-cover opacity-20" />
-    <div class="relative mx-auto grid max-w-6xl gap-12 px-6 sm:grid-cols-2">
+  <section class="py-20">
+    <div class="mx-auto grid max-w-6xl gap-12 px-6 sm:grid-cols-2">
       <div>
         <p class="text-sm font-semibold uppercase tracking-wide text-gold">Vision</p>
-        <h2 class="mt-2 font-serif text-3xl font-bold">Not Advocacy. Not Regulation. Not Enforcement.</h2>
-        <p class="mt-4 text-slate-300">Unlike organizations whose primary mission is advocacy, regulation, or law enforcement, NFSINT focuses on transforming information into practical knowledge that empowers individuals, professionals, communities, and institutions to make informed decisions that enhance public safety.</p>
+        <h2 class="mt-2 font-serif text-3xl font-bold text-navy">Not Advocacy. Not Regulation. Not Enforcement.</h2>
+        <p class="mt-4 text-slate-600">Unlike organizations whose primary mission is advocacy, regulation, or law enforcement, NFSINT focuses on transforming information into practical knowledge that empowers individuals, professionals, communities, and institutions to make informed decisions that enhance public safety.</p>
       </div>
       <div>
         <p class="text-sm font-semibold uppercase tracking-wide text-gold">A Neutral Center for Knowledge</p>
-        <ul class="mt-4 space-y-3 text-slate-300">
+        <ul class="mt-4 space-y-3 text-slate-600">
           {notList.map((item) => <li>{item}</li>)}
         </ul>
         <a href="/about" class="mt-4 inline-block text-sm font-semibold text-gold hover:underline">What we are, and are not</a>
@@ -122,14 +127,16 @@ const audiences = [
     </div>
   </section>
 
-  <section class="mx-auto max-w-6xl px-6 py-20">
+  <section class="border-y border-slate-200 bg-slate-50 py-20">
+    <div class="mx-auto max-w-6xl px-6">
     <p class="text-sm font-semibold uppercase tracking-wide text-gold">Core Objectives</p>
     <h2 class="mt-2 font-serif text-3xl font-bold text-navy">Six Functions of a National Safety Intelligence Framework</h2>
     <p class="mt-4 max-w-2xl text-slate-600">Each objective is a distinct discipline, and each depends on the others. Together they form a repeatable path from raw information to practical prevention.</p>
     <div class="mt-10"><NumberedList items={objectives} columns={3} /></div>
+    </div>
   </section>
 
-  <section class="bg-slate-50 py-20">
+  <section class="py-20">
     <div class="mx-auto max-w-6xl px-6">
       <div class="flex items-end justify-between">
         <div>
@@ -143,24 +150,26 @@ const audiences = [
     </div>
   </section>
 
-  <section class="mx-auto max-w-6xl px-6 py-20">
-    <p class="text-sm font-semibold uppercase tracking-wide text-gold">Who We Serve</p>
-    <h2 class="mt-2 font-serif text-3xl font-bold text-navy">A National Audience for Practical Safety Intelligence</h2>
-    <p class="mt-4 max-w-2xl text-slate-600">NFSINT products are designed for the people and institutions who make daily decisions about firearm safety.</p>
-    <ul class="mt-8 grid gap-3 sm:grid-cols-3">
-      {audiences.map((a) => <li class="text-sm text-slate-600">{a}</li>)}
-    </ul>
+  <section class="relative isolate overflow-hidden bg-navy2 py-20 text-white">
+    <Image src={whoWeServeTexture} alt="" class="absolute inset-0 h-full w-full object-cover opacity-20" />
+    <div class="relative mx-auto max-w-6xl px-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">Who We Serve</p>
+      <h2 class="mt-2 font-serif text-3xl font-bold">A National Audience for Practical Safety Intelligence</h2>
+      <p class="mt-4 max-w-2xl text-slate-300">NFSINT products are designed for the people and institutions who make daily decisions about firearm safety.</p>
+      <ul class="mt-8 grid gap-3 sm:grid-cols-3">
+        {audiences.map((a) => <li class="text-sm text-slate-300">{a}</li>)}
+      </ul>
+    </div>
   </section>
 
-  <section class="relative isolate overflow-hidden bg-navy py-20 text-center text-white">
-    <Image src={collaborationTexture} alt="" class="absolute inset-0 h-full w-full object-cover opacity-20" />
-    <div class="relative mx-auto max-w-2xl px-6">
+  <section class="py-20 text-center">
+    <div class="mx-auto max-w-2xl px-6">
       <p class="text-sm font-semibold uppercase tracking-wide text-gold">Collaboration</p>
-      <h2 class="mt-2 font-serif text-3xl font-bold">Join the National Safety Intelligence Network</h2>
-      <p class="mt-4 text-slate-300">NFSINT is being built in collaboration with instructors, institutions, researchers, and community organizations. If your work touches firearm safety, there is a place for your experience in this framework.</p>
+      <h2 class="mt-2 font-serif text-3xl font-bold text-navy">Join the National Safety Intelligence Network</h2>
+      <p class="mt-4 text-slate-600">NFSINT is being built in collaboration with instructors, institutions, researchers, and community organizations. If your work touches firearm safety, there is a place for your experience in this framework.</p>
       <div class="mt-8 flex justify-center gap-4">
-        <a href="/contact" class="rounded bg-gold px-6 py-3 text-sm font-semibold text-navy">Contact NFSINT</a>
-        <a href="/partners" class="rounded border border-white px-6 py-3 text-sm font-semibold text-white">Partnership and Investment</a>
+        <a href="/contact" class="rounded border border-navy bg-navy px-6 py-3 text-sm font-semibold text-white hover:bg-navy2">Contact NFSINT</a>
+        <a href="/partners" class="rounded border border-navy/30 px-6 py-3 text-sm font-semibold text-navy hover:border-navy hover:bg-white">Partnership and Investment</a>
       </div>
     </div>
   </section>
