@@ -1,0 +1,107 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import NumberedList from "../components/NumberedList.astro";
+import ProductGrid from "../components/ProductGrid.astro";
+import heroImage from "../assets/images/intelligence-hero.webp";
+
+const sources = [
+  "Public safety reports", "Court decisions", "Accident investigations", "Academic research",
+  "Industry publications", "Firearms instructors", "Community organizations",
+  "Publicly available government data", "Safety trends and emerging issues",
+];
+
+const analysisProducts = [
+  "Threat assessments", "Safety bulletins", "Incident trend reports", "Risk analyses",
+  "Best-practice recommendations", "Training updates", "Research publications",
+];
+
+const analyticStandards = [
+  "Findings are attributed to their sources and dated.",
+  "Confidence and limitations are stated plainly.",
+  "Machine assistance is reviewed by a human analyst.",
+  "Products avoid advocacy framing and political language.",
+];
+
+const cycle = [
+  { number: "01", heading: "Collection", description: "Sourcing information from credible public reporting, research, and practitioners." },
+  { number: "02", heading: "Analysis", description: "Verifying, contextualizing, and identifying patterns, risks, and emerging issues." },
+  { number: "03", heading: "Production", description: "Drafting bulletins, assessments, and reports written for practical use." },
+  { number: "04", heading: "Dissemination", description: "Delivering products to owners, professionals, institutions, and decision-makers." },
+  { number: "05", heading: "Feedback", description: "Capturing field response to sharpen future collection priorities." },
+];
+
+const products = [
+  { title: "National Firearm Safety Bulletins", description: "Periodic bulletins summarizing current safety issues, recalls, and prevention guidance." },
+  { title: "Threat Awareness Reports", description: "Assessments of emerging risks relevant to institutions, ranges, and community organizations." },
+  { title: "Annual Firearm Safety Index", description: "A yearly synthesis of publicly available indicators of firearm safety and prevention." },
+  { title: "Safety Intelligence Database", description: "A searchable, citation-backed repository of safety findings and lessons learned." },
+  { title: "AI-Powered Research Assistant", description: "A guided research tool to help practitioners locate relevant safety literature quickly." },
+  { title: "Instructor Resource Center", description: "Curriculum support, updates, and reference material for firearms instructors." },
+  { title: "Incident Lessons Learned Library", description: "Structured case reviews focused on preventable factors and corrective practice." },
+  { title: "Safety Certification Programs", description: "Standards-based certification pathways for individuals and organizations." },
+  { title: "Public Education Campaigns", description: "Plain-language campaigns on storage, access prevention, and situational awareness." },
+  { title: "Community Risk Assessments", description: "Structured assessments helping local organizations identify and reduce risk." },
+];
+---
+<Layout title="Intelligence" description="Safety intelligence is a discipline: sourcing credible information, analyzing it rigorously, and publishing something a practitioner can actually use.">
+  <Hero
+    eyebrow="Intelligence"
+    heading="Collection, Analysis, and Production"
+    description="Safety intelligence is a discipline: sourcing credible information, analyzing it rigorously, and publishing something a practitioner can actually use."
+    image={heroImage}
+    imageAlt="Abstract navy network of connected data nodes"
+  />
+
+  <section class="mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:grid-cols-2">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">Intelligence Collection</p>
+      <h2 class="mt-2 font-serif text-2xl font-bold text-navy">Where the Information Comes From</h2>
+      <p class="mt-4 text-slate-600">NFSINT gathers information exclusively from credible, publicly available, and practitioner-contributed sources.</p>
+    </div>
+    <div>
+      <ul class="grid grid-cols-1 gap-2 text-sm text-slate-600 sm:grid-cols-2">
+        {sources.map((s) => <li>{s}</li>)}
+      </ul>
+      <p class="mt-4 text-sm text-slate-500">Collection priorities are set by analytic need, not by volume. Sources are recorded and cited so every published finding can be traced back to its origin.</p>
+    </div>
+  </section>
+
+  <section class="bg-slate-50 py-20">
+    <div class="mx-auto grid max-w-6xl gap-12 px-6 sm:grid-cols-2">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-gold">Intelligence Analysis</p>
+        <h2 class="mt-2 font-serif text-2xl font-bold text-navy">Turning Raw Information into Usable Products</h2>
+        <p class="mt-4 text-slate-600">Analysis is where fragmented reporting becomes a pattern, and a pattern becomes guidance. NFSINT analysis is intended to produce products such as:</p>
+        <ul class="mt-4 space-y-2 text-sm text-slate-600">
+          {analysisProducts.map((p) => <li>{p}</li>)}
+        </ul>
+      </div>
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-gold">Analytic Standards</p>
+        <ul class="mt-4 space-y-3 text-sm text-slate-600">
+          {analyticStandards.map((s) => <li>{s}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-20">
+    <p class="text-sm font-semibold uppercase tracking-wide text-gold">The Intelligence Cycle</p>
+    <h2 class="mt-2 font-serif text-3xl font-bold text-navy">Collection to Feedback, Then Again</h2>
+    <p class="mt-4 max-w-2xl text-slate-600">A closed loop keeps products accurate over time: what the field reports back shapes what NFSINT collects next.</p>
+    <div class="mt-10"><NumberedList items={cycle} columns={3} /></div>
+    <p class="mt-6 text-sm text-slate-500">Feedback returns to Collection, restarting the cycle.</p>
+  </section>
+
+  <section class="bg-slate-50 py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">Intelligence Products</p>
+      <h2 class="mt-2 font-serif text-3xl font-bold text-navy">Potential Intelligence Products</h2>
+      <p class="mt-4 max-w-2xl text-slate-600">Every product below is planned or in development. None are operational today, and nothing on this page should be read as an existing service.</p>
+      <div class="mt-10"><ProductGrid items={products} /></div>
+      <p class="mt-8 text-slate-600">Organizations interested in early access, pilot participation, or contributing source material to the collection program are invited to make contact.</p>
+      <a href="/contact" class="mt-2 inline-block text-sm font-semibold text-gold hover:underline">Contact the Program</a>
+    </div>
+  </section>
+</Layout>
