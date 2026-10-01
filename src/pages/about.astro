@@ -2,7 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import FAQAccordion from "../components/FAQAccordion.astro";
+import { Image } from "astro:assets";
 import heroImage from "../assets/images/about-hero.webp";
+// Live site: the Current Status section is bg-navy with this texture
+// overlay - confirmed via each <img>'s closest `section` on the live page.
+import statusTexture from "../assets/images/mission-hero.webp";
 
 const faqs = [
   {
@@ -87,15 +91,18 @@ const steps = [
     </div>
   </section>
 
-  <section class="mx-auto max-w-3xl px-6 py-20">
-    <p class="text-sm font-semibold uppercase tracking-wide text-gold">Current Status</p>
-    <h2 class="mt-2 font-serif text-2xl font-bold text-navy">NFSINT is in the organizational development stage.</h2>
-    <p class="mt-4 text-slate-600">The organization is not yet operational. It has no published bulletins, no active certifications, no membership program, and no research findings in circulation. Everything described across this site is planned, in development, or envisioned, and is labeled as such.</p>
-    <p class="mt-4 text-slate-600">No operating history, statistics, partnerships, endorsements, or member counts are claimed anywhere on this website. When those things exist, they will be published with their sources.</p>
-    <p class="mt-4 text-slate-600">NFSINT is an independent organization in the organizational development stage. It is not a government agency, regulatory body, or law enforcement organization. Content on this site is provided for educational and informational purposes only.</p>
+  <section class="relative isolate overflow-hidden bg-navy py-20 text-white">
+    <Image src={statusTexture} alt="" class="absolute inset-0 h-full w-full object-cover opacity-20" />
+    <div class="relative mx-auto max-w-3xl px-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">Current Status</p>
+      <h2 class="mt-2 font-serif text-2xl font-bold">NFSINT is in the organizational development stage.</h2>
+      <p class="mt-4 text-slate-300">The organization is not yet operational. It has no published bulletins, no active certifications, no membership program, and no research findings in circulation. Everything described across this site is planned, in development, or envisioned, and is labeled as such.</p>
+      <p class="mt-4 text-slate-300">No operating history, statistics, partnerships, endorsements, or member counts are claimed anywhere on this website. When those things exist, they will be published with their sources.</p>
+      <p class="mt-4 text-slate-300">NFSINT is an independent organization in the organizational development stage. It is not a government agency, regulatory body, or law enforcement organization. Content on this site is provided for educational and informational purposes only.</p>
+    </div>
   </section>
 
-  <section class="bg-slate-50 py-20">
+  <section class="py-20">
     <div class="mx-auto max-w-3xl px-6">
       <p class="text-sm font-semibold uppercase tracking-wide text-gold">Leadership</p>
       <h2 class="mt-2 font-serif text-2xl font-bold text-navy">Leadership and Advisory Bios</h2>
@@ -114,11 +121,13 @@ const steps = [
     </div>
   </section>
 
-  <section class="mx-auto max-w-3xl px-6 py-20">
+  <section class="border-t border-slate-200 bg-slate-50 py-20">
+   <div class="mx-auto max-w-3xl px-6">
     <p class="text-sm font-semibold uppercase tracking-wide text-gold">Frequently Asked Questions</p>
     <h2 class="mt-2 font-serif text-2xl font-bold text-navy">Common Questions About Scope and Status</h2>
     <p class="mt-4 text-slate-600">The answers below describe the organization as it stands today. Where a capability is planned rather than operational, it is identified as such.</p>
     <div class="mt-8"><FAQAccordion items={faqs} /></div>
     <p class="mt-8 text-xs text-slate-500">NFSINT is an independent organization in the organizational development stage. It is not a government agency, regulatory body, or law enforcement organization. Content on this site is provided for educational and informational purposes only.</p>
+   </div>
   </section>
 </Layout>
