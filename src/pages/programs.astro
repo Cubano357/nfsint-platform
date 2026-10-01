@@ -34,7 +34,7 @@ const credentials = [
     imageAlt="Empty modern professional training classroom with neutral seating and a presentation screen"
   />
 
-  <section class="mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:grid-cols-2">
+  <section class="mx-auto grid max-w-6xl gap-12 px-6 py-20 grid-cols-1 sm:grid-cols-2">
     <div>
       <p class="text-sm font-semibold uppercase tracking-wide text-gold">Public Safety Education</p>
       <h2 class="mt-2 font-serif text-2xl font-bold text-navy">Plain-Language Safety Education for Everyday Decisions</h2>
@@ -46,7 +46,7 @@ const credentials = [
         <p class="text-sm font-semibold uppercase tracking-wide text-slate-500">Programs Developed For</p>
         <span class="rounded-full bg-navy2/10 px-3 py-1 text-xs font-semibold uppercase text-navy">Planned</span>
       </div>
-      <ul class="mt-4 grid grid-cols-2 gap-2 text-sm text-slate-600">
+      <ul class="mt-4 grid grid-cols-1 gap-2 text-sm text-slate-600 sm:grid-cols-2">
         {educationAudience.map((a) => <li>{a}</li>)}
       </ul>
     </div>
@@ -58,7 +58,7 @@ const credentials = [
         <p class="text-sm font-semibold uppercase tracking-wide text-slate-500">Specialized Training For</p>
         <span class="rounded-full bg-navy2/10 px-3 py-1 text-xs font-semibold uppercase text-navy">Planned</span>
       </div>
-      <ul class="mt-4 grid grid-cols-2 gap-2 text-sm text-slate-600 sm:grid-cols-3">
+      <ul class="mt-4 grid grid-cols-1 gap-2 text-sm text-slate-600 sm:grid-cols-3">
         {trainingAudience.map((a) => <li>{a}</li>)}
       </ul>
     </div>

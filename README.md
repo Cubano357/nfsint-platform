@@ -1,43 +1,26 @@
-# Astro Starter Kit: Minimal
+# NFSINT Platform — Frontend
 
-```sh
-npm create astro@latest -- --template minimal
+Astro + Tailwind CSS rebuild of the NFSINT public website, owned source replacing the original no-code SuperCool build.
+
+## Development
+
+```
+npm install
+astro dev --background
+astro dev status
+astro dev logs
+astro dev stop
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Structure
 
-## 🚀 Project Structure
+- `src/pages/` — the 9 site pages
+- `src/components/` — shared presentational components (Hero, NumberedList, ProductGrid, FAQAccordion, InquiryForm, Seal, Header, Footer)
+- `src/data/nav.ts` — header/footer navigation data
+- `src/assets/images/` — self-hosted site imagery (no runtime dependency on the original SuperCool CDN)
+- `docs/superpowers/specs/` — design specs
+- `docs/superpowers/plans/` — implementation plans
 
-Inside of your Astro project, you'll see the following folders and files:
+## Status
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Sub-project 1 of 5 for the NFSINT platform: pure visual/content rebuild, no backend. See `docs/superpowers/specs/2026-09-30-frontend-rebuild-design.md` for full scope and non-goals.
