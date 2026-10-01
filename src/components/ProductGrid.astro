@@ -1,0 +1,20 @@
+---
+interface Item {
+  title: string;
+  description: string;
+}
+interface Props {
+  items: Item[];
+  badge?: string;
+}
+const { items, badge = "In Development" } = Astro.props;
+---
+<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  {items.map((item) => (
+    <article class="rounded-lg border border-slate-200 p-6">
+      <span class="inline-block rounded-full bg-navy2/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-navy">{badge}</span>
+      <h3 class="mt-3 font-serif text-lg font-bold text-navy">{item.title}</h3>
+      <p class="mt-2 text-sm text-slate-600">{item.description}</p>
+    </article>
+  ))}
+</div>
