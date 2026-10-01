@@ -9,16 +9,19 @@ interface Item {
 interface Props {
   items: Item[];
   columns?: 2 | 3 | 4;
+  dark?: boolean;
 }
-const { items, columns = 2 } = Astro.props;
+const { items, columns = 2, dark = false } = Astro.props;
 const gridClass = { 2: "sm:grid-cols-2", 3: "sm:grid-cols-3", 4: "sm:grid-cols-4" }[columns];
+const headingClass = dark ? "text-white" : "text-navy";
+const bodyClass = dark ? "text-slate-300" : "text-slate-600";
 ---
 <div class={`grid gap-8 ${gridClass}`}>
   {items.map((item) => (
     <article>
       <p class="font-serif text-2xl font-bold text-gold">{item.number}</p>
-      <h3 class="mt-2 font-serif text-lg font-bold text-navy">{item.heading}</h3>
-      {item.description && <p class="mt-2 text-sm text-slate-600">{item.description}</p>}
+      <h3 class={`mt-2 font-serif text-lg font-bold ${headingClass}`}>{item.heading}</h3>
+      {item.description && <p class={`mt-2 text-sm ${bodyClass}`}>{item.description}</p>}
       {item.href && (
         <a href={item.href} class="mt-3 inline-block text-sm font-semibold text-gold hover:underline">
           {item.linkLabel ?? "Learn more"}

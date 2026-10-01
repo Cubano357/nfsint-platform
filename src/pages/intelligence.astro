@@ -3,7 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import NumberedList from "../components/NumberedList.astro";
 import ProductGrid from "../components/ProductGrid.astro";
+import { Image } from "astro:assets";
 import heroImage from "../assets/images/intelligence-hero.webp";
+// Live site: the Intelligence Cycle section is bg-navy with this texture
+// overlay - confirmed via the live page's section classes and <img> DOM path.
+import cycleTexture from "../assets/images/texture-navy-a.webp";
 
 const sources = [
   "Public safety reports", "Court decisions", "Accident investigations", "Academic research",
@@ -86,15 +90,18 @@ const products = [
     </div>
   </section>
 
-  <section class="mx-auto max-w-6xl px-6 py-20">
-    <p class="text-sm font-semibold uppercase tracking-wide text-gold">The Intelligence Cycle</p>
-    <h2 class="mt-2 font-serif text-3xl font-bold text-navy">Collection to Feedback, Then Again</h2>
-    <p class="mt-4 max-w-2xl text-slate-600">A closed loop keeps products accurate over time: what the field reports back shapes what NFSINT collects next.</p>
-    <div class="mt-10"><NumberedList items={cycle} columns={3} /></div>
-    <p class="mt-6 text-sm text-slate-500">Feedback returns to Collection, restarting the cycle.</p>
+  <section class="relative isolate overflow-hidden bg-navy py-20 text-white">
+    <Image src={cycleTexture} alt="" class="absolute inset-0 h-full w-full object-cover opacity-20" />
+    <div class="relative mx-auto max-w-6xl px-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">The Intelligence Cycle</p>
+      <h2 class="mt-2 font-serif text-3xl font-bold">Collection to Feedback, Then Again</h2>
+      <p class="mt-4 max-w-2xl text-slate-300">A closed loop keeps products accurate over time: what the field reports back shapes what NFSINT collects next.</p>
+      <div class="mt-10"><NumberedList items={cycle} columns={3} dark /></div>
+      <p class="mt-6 text-sm text-slate-400">Feedback returns to Collection, restarting the cycle.</p>
+    </div>
   </section>
 
-  <section class="bg-slate-50 py-20">
+  <section class="py-20">
     <div class="mx-auto max-w-6xl px-6">
       <p class="text-sm font-semibold uppercase tracking-wide text-gold">Intelligence Products</p>
       <h2 class="mt-2 font-serif text-3xl font-bold text-navy">Potential Intelligence Products</h2>
