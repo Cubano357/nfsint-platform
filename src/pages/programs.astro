@@ -1,0 +1,93 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import ProductGrid from "../components/ProductGrid.astro";
+import { Image } from "astro:assets";
+import heroImage from "../assets/images/programs-hero.webp";
+// Live site: the Register Interest section is bg-navy2 with this texture
+// overlay - confirmed via the live page's section classes and <img> DOM path.
+import registerTexture from "../assets/images/mission-hero.webp";
+
+const educationAudience = [
+  "Firearm owners", "Families", "Schools", "Colleges", "Faith organizations",
+  "Businesses", "Security professionals", "Firearms instructors", "Community leaders",
+];
+
+const trainingAudience = [
+  "Firearms instructors", "Range Safety Officers", "Security personnel",
+  "Corporate safety teams", "Emergency preparedness professionals", "Community organizations",
+];
+
+const credentials = [
+  { title: "Instructor Credentialing", description: "A planned credential recognizing instructors who meet NFSINT curriculum and safety standards." },
+  { title: "Range Safety Officer Certification", description: "An envisioned certification covering range protocols, incident response, and documentation." },
+  { title: "Organizational Safety Certification", description: "A planned pathway for ranges, employers, and institutions adopting NFSINT safety practices." },
+  { title: "Continuing Education Units", description: "Planned continuing-education recognition tied to bulletins, research, and training updates." },
+];
+---
+<Layout title="Programs" description="Education and professional development programs from NFSINT.">
+  <Hero
+    eyebrow="Programs"
+    heading="Education and Professional Development"
+    description="Intelligence only reduces harm when it reaches the people who act on it. NFSINT programs are the delivery mechanism — for the public and for professionals."
+    image={heroImage}
+    imageAlt="Empty modern professional training classroom with neutral seating and a presentation screen"
+  />
+
+  <section class="mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:grid-cols-2">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">Public Safety Education</p>
+      <h2 class="mt-2 font-serif text-2xl font-bold text-navy">Plain-Language Safety Education for Everyday Decisions</h2>
+      <p class="mt-4 text-slate-600">NFSINT intends to develop educational programs that translate research and analysis into guidance people can apply at home, at work, and in their communities.</p>
+      <p class="mt-4 text-slate-600">Curricula are planned to be modular, evidence-based, and revised as new findings enter the safety intelligence database.</p>
+    </div>
+    <div>
+      <div class="flex items-center gap-3">
+        <p class="text-sm font-semibold uppercase tracking-wide text-slate-500">Programs Developed For</p>
+        <span class="rounded-full bg-navy2/10 px-3 py-1 text-xs font-semibold uppercase text-navy">Planned</span>
+      </div>
+      <ul class="mt-4 grid grid-cols-2 gap-2 text-sm text-slate-600">
+        {educationAudience.map((a) => <li>{a}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="border-y border-slate-200 bg-slate-50 py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="flex items-center gap-3">
+        <p class="text-sm font-semibold uppercase tracking-wide text-slate-500">Specialized Training For</p>
+        <span class="rounded-full bg-navy2/10 px-3 py-1 text-xs font-semibold uppercase text-navy">Planned</span>
+      </div>
+      <ul class="mt-4 grid grid-cols-2 gap-2 text-sm text-slate-600 sm:grid-cols-3">
+        {trainingAudience.map((a) => <li>{a}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-20">
+    <p class="text-sm font-semibold uppercase tracking-wide text-gold">Professional Development</p>
+    <h2 class="mt-2 font-serif text-2xl font-bold text-navy">Standards-Based Training for Practitioners</h2>
+    <p class="mt-4 max-w-2xl text-slate-600">Professional programs are intended to raise consistency across the field — shared terminology, shared protocols, and shared expectations for documentation and review.</p>
+    <p class="mt-4 max-w-2xl text-slate-600">Where training standards currently vary widely, NFSINT aims to publish a common reference that instructors and organizations may adopt voluntarily.</p>
+  </section>
+
+  <section class="py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">Credentialing</p>
+      <h2 class="mt-2 font-serif text-3xl font-bold text-navy">Planned Certifications and Credentialing</h2>
+      <p class="mt-4 max-w-2xl text-slate-600">The credential pathways below are envisioned, not yet offered. They are published so instructors and organizations can review the intended direction and comment on it.</p>
+      <div class="mt-10"><ProductGrid items={credentials} /></div>
+    </div>
+  </section>
+
+  <section class="relative isolate overflow-hidden bg-navy2 py-20 text-center text-white">
+    <Image src={registerTexture} alt="" class="absolute inset-0 h-full w-full object-cover opacity-20" />
+    <div class="relative mx-auto max-w-2xl px-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">Register Interest</p>
+      <h2 class="mt-2 font-serif text-2xl font-bold">Be First in Line When Programs Open</h2>
+      <p class="mt-4 text-slate-300">Instructors, range operators, safety officers, and institutions may register interest now. NFSINT will contact registrants as curricula and credentialing pathways are finalized.</p>
+      <p class="mt-4 text-sm text-slate-400">Use the contact form and select Institutional Membership or Partnership to register program interest. Include your role, organization, and the programs you would like to see first.</p>
+      <a href="/contact" class="mt-6 inline-block rounded bg-gold px-6 py-3 text-sm font-semibold text-navy">Register Program Interest</a>
+    </div>
+  </section>
+</Layout>
