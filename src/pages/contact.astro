@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import InquiryForm from "../components/InquiryForm.astro";
+import heroImage from "../assets/images/contact-hero.webp";
+
+const categories = [
+  { title: "General Inquiry", description: "Questions about NFSINT, its intelligence products, or its stage of development." },
+  { title: "Partnership", description: "Organizations, ranges, employers, and institutions exploring collaboration or membership." },
+  { title: "Media", description: "Press and editorial requests, background briefings, and factual verification." },
+  { title: "Research", description: "Academics and institutions proposing joint study, data sharing, or peer review." },
+];
+---
+<Layout title="Contact" description="Contact NFSINT for general inquiries, partnership discussions, media requests, and research collaboration.">
+  <Hero
+    eyebrow="Contact"
+    heading="Contact NFSINT"
+    description="Use the form below for general inquiries, partnership discussions, media requests, and research collaboration. Every submission is recorded and routed to the correspondence queue."
+    image={heroImage}
+    imageAlt="Abstract cartographic view of the United States rendered in luminous data lines"
+  />
+
+  <div class="mx-auto max-w-6xl px-6 py-12">
+    <div class="rounded border border-gold bg-gold/10 px-6 py-4 text-sm text-navy">
+      <p class="font-semibold">Important</p>
+      <p class="mt-1">NFSINT does not accept emergency reports and is not a law enforcement agency. If you are facing an emergency or an immediate threat to safety, call 911.</p>
+    </div>
+  </div>
+
+  <section class="mx-auto grid max-w-6xl gap-12 px-6 pb-20 sm:grid-cols-2">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">Correspondence</p>
+      <h2 class="mt-2 font-serif text-2xl font-bold text-navy">How Inquiries Are Handled</h2>
+      <div class="mt-6 space-y-6">
+        {categories.map((c) => (
+          <div>
+            <h3 class="font-serif text-lg font-bold text-navy">{c.title}</h3>
+            <p class="mt-1 text-sm text-slate-600">{c.description}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-8 rounded border border-slate-200 p-4">
+        <p class="text-sm font-semibold text-navy">Crisis Resources</p>
+        <p class="mt-1 text-sm text-slate-600">If you or someone you know is in crisis, call or text 988 (Suicide &amp; Crisis Lifeline) in the United States.</p>
+      </div>
+    </div>
+    <InquiryForm
+      formTitle="Send an Inquiry"
+      formNote="Fields marked with a gold asterisk are required. Responses are sent by email; NFSINT does not use submissions for marketing or share them with third parties."
+      showPhone={true}
+      typeLabel="Inquiry Type"
+      typeOptions={["General Inquiry", "Partnership", "Investment", "Institutional Membership", "Research Collaboration", "Media"]}
+      submitLabel="Send Inquiry"
+    />
+  </section>
+</Layout>

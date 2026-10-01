@@ -1,0 +1,56 @@
+---
+interface Props {
+  formTitle: string;
+  formNote: string;
+  showPhone: boolean;
+  typeLabel: string;
+  typeOptions: string[];
+  submitLabel: string;
+}
+const { formTitle, formNote, showPhone, typeLabel, typeOptions, submitLabel } = Astro.props;
+---
+<div>
+  <p class="font-serif text-lg font-bold text-navy">{formTitle}</p>
+  <p class="mt-2 text-sm text-slate-600">{formNote}</p>
+  <form id="inquiry-form" class="mt-6 space-y-4">
+    <div>
+      <label class="block text-sm font-semibold text-navy" for="name">Name <span class="text-gold">*</span></label>
+      <input id="name" name="name" type="text" required class="mt-1 w-full rounded border border-slate-300 px-3 py-2 text-sm" />
+    </div>
+    <div>
+      <label class="block text-sm font-semibold text-navy" for="organization">Organization</label>
+      <input id="organization" name="organization" type="text" class="mt-1 w-full rounded border border-slate-300 px-3 py-2 text-sm" />
+    </div>
+    <div>
+      <label class="block text-sm font-semibold text-navy" for="email">Email <span class="text-gold">*</span></label>
+      <input id="email" name="email" type="email" required class="mt-1 w-full rounded border border-slate-300 px-3 py-2 text-sm" />
+    </div>
+    {showPhone && (
+      <div>
+        <label class="block text-sm font-semibold text-navy" for="phone">Phone (optional)</label>
+        <input id="phone" name="phone" type="tel" class="mt-1 w-full rounded border border-slate-300 px-3 py-2 text-sm" />
+      </div>
+    )}
+    <div>
+      <label class="block text-sm font-semibold text-navy" for="type">{typeLabel} <span class="text-gold">*</span></label>
+      <select id="type" name="type" required class="mt-1 w-full rounded border border-slate-300 px-3 py-2 text-sm">
+        {typeOptions.map((opt) => <option value={opt}>{opt}</option>)}
+      </select>
+    </div>
+    <div>
+      <label class="block text-sm font-semibold text-navy" for="message">Message <span class="text-gold">*</span></label>
+      <textarea id="message" name="message" required rows="5" class="mt-1 w-full rounded border border-slate-300 px-3 py-2 text-sm"></textarea>
+    </div>
+    <p id="form-placeholder-notice" class="hidden rounded border border-gold bg-gold/10 px-4 py-3 text-sm text-navy" role="alert">
+      This form isn't connected to a backend yet — it's a placeholder for a later sub-project. Your message was not sent.
+    </p>
+    <button type="submit" class="rounded bg-navy px-6 py-3 text-sm font-semibold text-white">{submitLabel}</button>
+  </form>
+</div>
+<script>
+  const form = document.getElementById("inquiry-form");
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    document.getElementById("form-placeholder-notice")?.classList.remove("hidden");
+  });
+</script>
