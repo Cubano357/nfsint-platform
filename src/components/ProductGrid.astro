@@ -2,6 +2,8 @@
 interface Item {
   title: string;
   description: string;
+  href?: string;
+  linkLabel?: string;
 }
 interface Props {
   items: Item[];
@@ -12,9 +14,16 @@ const { items, badge = "In Development" } = Astro.props;
 <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
   {items.map((item) => (
     <article class="rounded-lg border border-slate-200 p-6">
-      <span class="inline-block rounded-full bg-navy2/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-navy">{badge}</span>
+      <span class={`inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${item.href ? "bg-gold/15 text-navy" : "bg-navy2/10 text-navy"}`}>
+        {item.href ? "Live Demo" : badge}
+      </span>
       <h3 class="mt-3 font-serif text-lg font-bold text-navy">{item.title}</h3>
       <p class="mt-2 text-sm text-slate-600">{item.description}</p>
+      {item.href && (
+        <a href={item.href} target="_blank" rel="noopener noreferrer" class="mt-3 inline-block text-sm font-semibold text-gold hover:underline">
+          {item.linkLabel ?? "View live demo"} &rarr;
+        </a>
+      )}
     </article>
   ))}
 </div>
