@@ -3,7 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import NumberedList from "../components/NumberedList.astro";
 import InquiryForm from "../components/InquiryForm.astro";
+import { Image } from "astro:assets";
 import heroImage from "../assets/images/partners-hero.webp";
+// Live site: the Sustainability Model section is bg-navy with this texture
+// overlay - confirmed via the live page's section classes and <img> DOM path.
+import sustainabilityTexture from "../assets/images/texture-navy-a.webp";
 
 const sectors = [
   { number: "01", heading: "Public safety technology" },
@@ -53,7 +57,7 @@ const whoThisIsFor = [
     <p class="mt-4 text-slate-600">Its value proposition lies in creating a scalable platform that delivers actionable safety intelligence, educational resources, and analytical tools to individuals, organizations, and institutions seeking to improve firearm safety and risk awareness.</p>
   </section>
 
-  <section class="bg-slate-50 py-20">
+  <section class="border-y border-slate-200 bg-slate-50 py-20">
     <div class="mx-auto max-w-6xl px-6">
       <p class="text-sm font-semibold uppercase tracking-wide text-gold">Why NFSINT</p>
       <h2 class="mt-2 font-serif text-3xl font-bold text-navy">A Convergence of Growing Sectors</h2>
@@ -62,15 +66,18 @@ const whoThisIsFor = [
     </div>
   </section>
 
-  <section class="mx-auto max-w-6xl px-6 py-20">
-    <p class="text-sm font-semibold uppercase tracking-wide text-gold">Sustainability Model</p>
-    <h2 class="mt-2 font-serif text-3xl font-bold text-navy">Potential Revenue Streams</h2>
-    <p class="mt-4 max-w-2xl text-slate-600">A durable institution needs diversified support. The streams listed are potential, not active, and are published for evaluation rather than as projections.</p>
-    <div class="mt-10"><NumberedList items={revenueStreams} columns={4} /></div>
-    <p class="mt-8 text-sm text-slate-500">No revenue figures, valuations, timelines, or financial projections are presented on this website. Detailed materials are shared directly with reviewing parties on request.</p>
+  <section class="relative isolate overflow-hidden bg-navy py-20 text-white">
+    <Image src={sustainabilityTexture} alt="" class="absolute inset-0 h-full w-full object-cover opacity-20" />
+    <div class="relative mx-auto max-w-6xl px-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">Sustainability Model</p>
+      <h2 class="mt-2 font-serif text-3xl font-bold">Potential Revenue Streams</h2>
+      <p class="mt-4 max-w-2xl text-slate-300">A durable institution needs diversified support. The streams listed are potential, not active, and are published for evaluation rather than as projections.</p>
+      <div class="mt-10"><NumberedList items={revenueStreams} columns={4} dark /></div>
+      <p class="mt-8 text-sm text-slate-400">No revenue figures, valuations, timelines, or financial projections are presented on this website. Detailed materials are shared directly with reviewing parties on request.</p>
+    </div>
   </section>
 
-  <section class="bg-slate-50 py-20">
+  <section class="py-20">
     <div class="mx-auto grid max-w-6xl gap-12 px-6 sm:grid-cols-2">
       <div>
         <p class="text-sm font-semibold uppercase tracking-wide text-gold">Who This Is For</p>
