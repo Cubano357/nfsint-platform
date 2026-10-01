@@ -2,7 +2,12 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import NumberedList from "../components/NumberedList.astro";
+import { Image } from "astro:assets";
 import heroImage from "../assets/images/technology-hero.webp";
+// Live site: the Positioning section is bg-navy, reusing Intelligence's
+// hero image as its texture overlay - confirmed via the live page's <img>
+// src and DOM path, not a guess.
+import positioningTexture from "../assets/images/intelligence-hero.webp";
 
 const capabilities = [
   { number: "01", heading: "Safety reporting", description: "Structured intake for near-miss and safety observations from participating organizations." },
@@ -45,7 +50,7 @@ const positioning = [
     </div>
   </section>
 
-  <section class="bg-slate-50 py-20">
+  <section class="border-y border-slate-200 bg-slate-50 py-20">
     <div class="mx-auto max-w-6xl px-6">
       <p class="text-sm font-semibold uppercase tracking-wide text-gold">Capabilities</p>
       <h2 class="mt-2 font-serif text-3xl font-bold text-navy">Seven Planned Platform Capabilities</h2>
@@ -54,18 +59,21 @@ const positioning = [
     </div>
   </section>
 
-  <section class="mx-auto max-w-6xl px-6 py-20">
-    <p class="text-sm font-semibold uppercase tracking-wide text-gold">Positioning</p>
-    <h2 class="mt-2 font-serif text-3xl font-bold text-navy">A Scalable SaaS and Data Analytics Platform</h2>
-    <p class="mt-4 max-w-2xl text-slate-600">NFSINT technology is envisioned as a subscription platform with an analytics core — the same architecture that has professionalized safety management in aviation, healthcare, and industrial risk.</p>
-    <div class="mt-10 grid gap-8 sm:grid-cols-4">
-      {positioning.map((p) => (
-        <div>
-          <h3 class="font-serif text-lg font-bold text-navy">{p.title}</h3>
-          <p class="mt-2 text-sm text-slate-600">{p.body}</p>
-        </div>
-      ))}
+  <section class="relative isolate overflow-hidden bg-navy py-20 text-white">
+    <Image src={positioningTexture} alt="" class="absolute inset-0 h-full w-full object-cover opacity-20" />
+    <div class="relative mx-auto max-w-6xl px-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">Positioning</p>
+      <h2 class="mt-2 font-serif text-3xl font-bold">A Scalable SaaS and Data Analytics Platform</h2>
+      <p class="mt-4 max-w-2xl text-slate-300">NFSINT technology is envisioned as a subscription platform with an analytics core — the same architecture that has professionalized safety management in aviation, healthcare, and industrial risk.</p>
+      <div class="mt-10 grid gap-8 sm:grid-cols-4">
+        {positioning.map((p) => (
+          <div>
+            <h3 class="font-serif text-xl">{p.title}</h3>
+            <p class="mt-2 text-sm text-slate-300">{p.body}</p>
+          </div>
+        ))}
+      </div>
+      <a href="/partners" class="mt-10 inline-block rounded border border-gold bg-gold px-6 py-3 text-sm font-semibold text-navy hover:bg-[#c9974a]">Platform Partnership and Investment</a>
     </div>
-    <a href="/partners" class="mt-10 inline-block rounded bg-navy px-6 py-3 text-sm font-semibold text-white">Platform Partnership and Investment</a>
   </section>
 </Layout>
