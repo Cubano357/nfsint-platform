@@ -1,0 +1,88 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import heroImage from "../assets/images/research-hero.webp";
+
+const principles = [
+  { title: "Independent", body: "research agendas are not set by advocacy campaigns or political outcomes." },
+  { title: "Evidence-based", body: "findings rest on documented data and transparent method, not assertion." },
+  { title: "Practitioner-informed", body: "instructors and safety professionals help frame the questions." },
+  { title: "Openly limited", body: "what a study cannot show is stated as plainly as what it can." },
+];
+
+const areas = [
+  { title: "Safe firearm storage", description: "Evaluating storage practices, adoption barriers, and effective access-prevention guidance." },
+  { title: "Suicide prevention", description: "Studying prevention frameworks, means-safety counseling, and support pathways with care and gravity." },
+  { title: "Accidental shootings", description: "Examining contributing factors in unintentional discharges and how they can be prevented." },
+  { title: "Human factors in firearm incidents", description: "Applying human-factors science to handling errors, fatigue, stress, and procedural drift." },
+  { title: "Situational awareness", description: "Understanding how attention, perception, and environment shape safe decisions." },
+  { title: "Defensive decision-making", description: "Researching judgment under stress, decision thresholds, and de-escalation behavior." },
+  { title: "Training effectiveness", description: "Measuring which instructional methods produce durable, transferable safe behavior." },
+  { title: "Public safety communication", description: "Testing how safety guidance is best framed, delivered, and retained by communities." },
+];
+
+const collaborationList = [
+  "Co-authored studies and literature reviews.",
+  "Peer review of NFSINT analytic products.",
+  "Access to structured, de-identified safety observations.",
+  "Joint grant applications and symposium participation.",
+];
+---
+<Layout title="Research" description="NFSINT conducts independent, evidence-based research. Its purpose is prevention.">
+  <Hero
+    eyebrow="Research"
+    heading="Independent, Evidence-Based Research"
+    description="NFSINT conducts independent, evidence-based research. Its purpose is prevention: understanding why preventable firearm injuries occur and what measurably reduces them."
+    image={heroImage}
+    imageAlt="Research desk with printed statistical reports and charts in neutral daylight"
+  />
+
+  <section class="mx-auto max-w-6xl px-6 py-20">
+    <p class="text-sm font-semibold uppercase tracking-wide text-gold">Approach</p>
+    <h2 class="mt-2 font-serif text-3xl font-bold text-navy">Questions First, Conclusions Last</h2>
+    <p class="mt-4 max-w-2xl text-slate-600">Research is scoped around practical questions raised by the collection program, and published with its methods, sources, and limitations visible.</p>
+    <div class="mt-10 grid gap-6 sm:grid-cols-4">
+      {principles.map((p) => (
+        <div>
+          <p class="font-serif text-lg font-bold text-navy">{p.title}</p>
+          <p class="mt-2 text-sm text-slate-600">— {p.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-slate-50 py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">Research Areas</p>
+      <h2 class="mt-2 font-serif text-3xl font-bold text-navy">Eight Areas of Study</h2>
+      <p class="mt-4 max-w-2xl text-slate-600">These are the initial areas of inquiry for the NFSINT research program. Each is chosen because better evidence in that area would translate directly into prevention.</p>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {areas.map((a) => (
+          <article class="rounded-lg border border-slate-200 bg-white p-6">
+            <h3 class="font-serif text-lg font-bold text-navy">{a.title}</h3>
+            <p class="mt-2 text-sm text-slate-600">{a.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-2xl px-6 py-20 text-center">
+    <p class="text-sm font-semibold uppercase tracking-wide text-gold">Crisis Resources</p>
+    <p class="mt-4 text-slate-600">If you or someone you know is in crisis, call or text 988 (Suicide &amp; Crisis Lifeline) in the United States.</p>
+    <p class="mt-2 text-sm text-slate-500">NFSINT is a research organization and does not provide crisis counseling or clinical care. The Lifeline is available 24 hours a day, every day.</p>
+  </section>
+
+  <section class="bg-navy py-20 text-white">
+    <div class="mx-auto max-w-3xl px-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold">Research Collaboration</p>
+      <h2 class="mt-2 font-serif text-2xl font-bold">For Academics, Clinicians, and Institutions</h2>
+      <p class="mt-4 text-slate-300">NFSINT intends to work with universities, hospital systems, public health researchers, and professional bodies on joint study, peer review, and responsible data sharing.</p>
+      <p class="mt-6 text-sm font-semibold uppercase tracking-wide text-gold">What Collaboration Can Look Like</p>
+      <ul class="mt-3 space-y-2 text-slate-300">
+        {collaborationList.map((c) => <li>{c}</li>)}
+      </ul>
+      <a href="/contact" class="mt-6 inline-block rounded bg-gold px-6 py-3 text-sm font-semibold text-navy">Propose a Collaboration</a>
+    </div>
+  </section>
+</Layout>
